@@ -30,6 +30,28 @@ int ** makeMtx(size_t m, size_t n)
     return mtxR;
 }
 
+int ** transpose(int ** mtx, size_t m, size_t n)
+{
+    int ** mtx2 = nullptr;
+  try
+  {
+    mtx2 = makeMtx(n, m);
+  } 
+  catch (const std::bad_alloc & e)
+  {
+    throw;
+  }
+  for (size_t i = 0; i < n; ++i)
+  {
+    for (size_t j = 0; j < m; ++j)
+    {
+      mtx2[i][j] = mtx[j][i];
+    }
+  }
+  return mtx2;
+}
+
+
 void printMtx(int ** mtx, size_t m, size_t n)
 { 
   std::cout << mtx[0][0];
